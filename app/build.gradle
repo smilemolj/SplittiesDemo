@@ -36,8 +36,7 @@ dependencies {
 
     implementation("com.louiscad.splitties:splitties-fun-pack-android-base:3.0.0-alpha06")
     implementation("com.louiscad.splitties:splitties-arch-room:3.0.0-alpha06")
-
-    implementation("com.louiscad.splitties:splitties-checkedlazy:3.0.0-alpha06")
+    implementation 'com.orhanobut:logger:2.2.0'
 
 //    使用room要添加这个
     implementation "android.arch.persistence.room:runtime:1.1.1"
