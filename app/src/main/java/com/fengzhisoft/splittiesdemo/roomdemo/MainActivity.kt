@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
 //            }
 
             val values = User(
-                0,
+                81,
                 "John Smith",
                 "user@domain.org"
             )
@@ -49,8 +49,16 @@ class MainActivity : AppCompatActivity() {
                 )
 
             thread {
-                db.userDao().insertAll(values)
-                val all = db.userDao().all
+
+//                db.userDao().deleteall(all)
+//                db.clearAllTables()
+
+                db.userDao().addUser(values)
+
+                val all = db.userDao().getall()
+
+//                val all=db.userDao().favoriteByIdandname(12,"John Smith")
+
                 runOnUiThread {
                     textview.text = all.toString()
                 }

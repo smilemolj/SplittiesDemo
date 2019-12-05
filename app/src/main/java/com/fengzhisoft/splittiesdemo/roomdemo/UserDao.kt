@@ -1,15 +1,26 @@
 package com.fengzhisoft.splittiesdemo.roomdemo
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 import com.fengzhisoft.splittiesdemo.roomdemo.User
 
 @Dao
 interface UserDao {
-    @get:Query("SELECT * FROM User")
-    val all: List<User?>?
+    @Query("SELECT * FROM User")
+    fun getall(): List<User?>?
 
-    @Insert
-    fun insertAll(vararg users: User?)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertAll(listusers: List<User?>?)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun addUser(users: User)
+
+    @Delete
+    fun delete(users: User)
+
+    @Delete
+    fun deleteall(userslist: List<User?>?)
+
+    @Query("SELECT * FROM User WHERE id = :id and name= :name")
+    fun favoriteByIdandname(id: Int, name: String): User
+
 }
